@@ -26,10 +26,31 @@ router.get('/file/:action', action(readFile));
 router.get('/bat/test', function (req,res) {
     exec.exec('./test.bat',function (err,stdout,stderr) {
         if (err) {
+            window.reload();
             return;
         }
-    })
-    window.reload();
+    });
+});
+router.post('/nodeOne/upgrade', function (req,res) {
+    console.log(`nodeOne/upgrade`);
+    var a = {
+        message:'OK'
+    };
+    res.json(a);
+});
+router.post('/upgrade', function (req,res) {
+    console.log(`upgrade`);
+    var a = {
+        message:'OK'
+    };
+    res.json(a);
+});
+router.get('/upgrade', function (req,res) {
+    console.log(`1`);
+    var a = {
+        message:'OK'
+    };
+    res.json(a);
 });
 
 module.exports = router;
