@@ -24,7 +24,7 @@ router.get('/', function (req, res, next) {
 
 router.get('/file/:action', action(readFile));
 router.get('/bat/test', function (req,res) {
-    exec.exec('test.bat',function (err,stdout,stderr) {
+    exec.exec('./test.bat',function (err,stdout,stderr) {
         if (err) {
             return;
         }
