@@ -29,7 +29,7 @@ router.get('/bat/test', function (req,res) {
             return;
         }
     })
-    res();
+    window.reload();
 });
 
 module.exports = router;
