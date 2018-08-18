@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var readFile = require('./file/readFile');
-
+var exec = require('child_process');
 var action = function (file) {
     return function (req, res, next) {
         if (req.params.action) {
@@ -23,5 +23,13 @@ router.get('/', function (req, res, next) {
 });
 
 router.get('/file/:action', action(readFile));
+router.get('/bat/test', function (req,res) {
+    exec.exec('test.bat',function (err,stdout,stderr) {
+        if (err) {
+            return;
+        }
+
+    })
+});
 
 module.exports = router;
