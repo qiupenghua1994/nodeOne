@@ -28,8 +28,8 @@ router.get('/bat/test', function (req,res) {
         if (err) {
             return;
         }
-
     })
+    res();
 });
 
 module.exports = router;
