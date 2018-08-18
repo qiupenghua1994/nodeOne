@@ -4,28 +4,13 @@ var exec = require('child_process');
 var os = require('os');
 
 //更新重启node
-router.post('/restartNode', function (req,res) {
-    var ret = {
-        message:'manage restart node'
-    };
-    res.json(ret);
-
-    if(os.type().indexOf('indows')){
-        exec.exec('restart.bat',function (err,stdout,stderr) {
-            if (err) {
-                return;
-            }
-        });
-    }else{
-        exec.exec('./restart.bat',function (err,stdout,stderr) {
-            if (err) {
-                return;
-            }
-        });
-    }
-});
+router.post('/restartNode',restartNode);
+router.get('/restartNode',restartNode);
 //更新重启node
-router.post('/restartVue', function (req,res) {
+router.post('/restartVue', restartVue);
+router.get('/restartVue', restartVue);
+
+function restartVue(req,res){
     var ret = {
         message:'manage restart vue'
     };
@@ -44,5 +29,26 @@ router.post('/restartVue', function (req,res) {
             }
         });
     }
-});
+}
+function restartNode(req,res) {
+    var ret = {
+        message:'manage restart node'
+    };
+    res.json(ret);
+
+    if(os.type().indexOf('indows')){
+        exec.exec('restart.bat',function (err,stdout,stderr) {
+            if (err) {
+                return;
+            }
+        });
+    }else{
+        exec.exec('./restart.bat',function (err,stdout,stderr) {
+            if (err) {
+                return;
+            }
+        });
+    }
+}
+
 module.exports = router;
