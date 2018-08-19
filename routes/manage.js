@@ -32,6 +32,7 @@ function restartVue(req,res){
 }
 function restartNode(req,res) {
     console.log('restart begin');
+    console.log('tupe',os.type());
     var ret = {
         message:'manage restart node 12'
     };
