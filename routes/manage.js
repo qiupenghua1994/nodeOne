@@ -16,7 +16,7 @@ function restartVue(req,res){
     };
     res.json(ret);
 
-    if(os.type().indexOf('indows')){
+    if(os.type().indexOf('indows')!=-1){
         exec.exec('restart-vue.bat',function (err,stdout,stderr) {
             if (err) {
                 return;
@@ -38,7 +38,7 @@ function restartNode(req,res) {
     };
     res.json(ret);
 
-    if(os.type().indexOf('indows')){
+    if(os.type().indexOf('indows')!=-1){
         console.log('restart on windows11')
         exec.exec('restart.bat',function (err,stdout,stderr) {
             if (err) {
