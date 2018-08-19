@@ -33,14 +33,15 @@ function restartVue(req,res){
 function restartNode(req,res) {
     console.log('restart begin');
     var ret = {
-        message:'manage restart node'
+        message:'manage restart node 12'
     };
     res.json(ret);
 
     if(os.type().indexOf('indows')){
-        console.log('restart on windows')
+        console.log('restart on windows11')
         exec.exec('restart.bat',function (err,stdout,stderr) {
             if (err) {
+                console.log(err);
                 return;
             }
             console.log('restart on windows success')
@@ -49,6 +50,7 @@ function restartNode(req,res) {
         console.log('restart on linux')
         exec.exec('./restart.bat',function (err,stdout,stderr) {
             if (err) {
+                console.log(err);
                 return;
             }
             console.log('restart on windows success')
