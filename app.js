@@ -7,6 +7,7 @@ var logger = require('morgan');
 var utils = require('./public/utils')
 var indexRouter = require('./routes/index');
 var manageRouter = require('./routes/manage');
+var socketIndex = require('./routes/socketIndex');
 
 
 
