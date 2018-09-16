@@ -32,29 +32,27 @@ function restartVue(req,res){
 }
 function restartNode(req,res) {
     console.log('restart begin');
-    console.log('tupe',os.type());
+    console.log('type',os.type());
     var ret = {
         message:'manage restart node 12'
     };
     res.json(ret);
 
     if(os.type().indexOf('indows')!=-1){
-        console.log('restart on windows11')
+        console.log('restart on windows');
         exec.exec('restart.bat',function (err,stdout,stderr) {
             if (err) {
                 console.log(err);
                 return;
             }
-            console.log('restart on windows success')
         });
     }else{
-        console.log('restart on linux')
+        console.log('restart on linux');
         exec.exec('./restart.bat',function (err,stdout,stderr) {
             if (err) {
                 console.log(err);
                 return;
             }
-            console.log('restart on windows success')
         });
     }
 }
