@@ -8,7 +8,6 @@ function socketRouter(server) {
         var socketItem = socketList[socket.id] = {};
         socketItem.socket = socket;
 
-
         socket.on('login',function (data) {
             socketItem.userName =data.name;
             updateLinkMan();
@@ -19,7 +18,7 @@ function socketRouter(server) {
             for(var key in socketList){
                 linkMan.push(socketList[key].userName);
             }
-            io.emit('updateLinkMan',{data:linkMan})
+            io.emit('updateLinkManCB',{data:linkMan})
         }
 
         socket.emit('connection',{a:'a'});
@@ -27,6 +26,13 @@ function socketRouter(server) {
             setTimeout(function () {
                 io.emit('chatCB',{data:msg.content,userName:socketItem.userName});
             },500)
+        });
+        socket.on('updateLinkMan', function(msg){
+            var linkMan=[];
+            for(var key in socketList){
+                linkMan.push(socketList[key].userName);
+            }
+            socket.emit('updateLinkManCB',{data:linkMan})
         });
         socket.on('disconnect', function () {
             delete socketList[socket.id];
